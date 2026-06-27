@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)file:///C:/Users/JACK/Downloads/index_5.html -->
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="description" content="InfoSisVE — Monitor de réplicas sísmicas en Venezuela en tiempo real.">
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="description" content="InfoSisVE — Monitor de réplicas sísmicas en Venezuela en tiempo real." />
   <title>InfoSisVE — Monitor Sísmico Venezuela</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link href="./index_files/css2" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ocre:      #D4A017;
@@ -367,15 +367,15 @@
 
 <div class="stats">
   <div class="stat">
-    <div class="stat-valor" id="stat-replicas" style="color:var(--amarillo)">13</div>
+    <div class="stat-valor" id="stat-replicas" style="color:var(--amarillo)">—</div>
     <div class="stat-label">Réplicas 7 días</div>
   </div>
   <div class="stat">
-    <div class="stat-valor" id="stat-mayor" style="color:var(--naranja)">7.5</div>
+    <div class="stat-valor" id="stat-mayor" style="color:var(--naranja)">—</div>
     <div class="stat-label">Mayor magnitud</div>
   </div>
   <div class="stat">
-    <div class="stat-valor" id="stat-reciente" style="color:var(--turquesa)">hace 8 h</div>
+    <div class="stat-valor" id="stat-reciente" style="color:var(--turquesa)">—</div>
     <div class="stat-label">Última réplica</div>
   </div>
 </div>
@@ -387,168 +387,25 @@
       Actividad reciente
       <span class="fuente-badge" id="fuente-badge">USGS</span>
     </span>
-    <span class="ultima-act" id="ultima-act">act. 02:27 a. m.</span> <span class="ultima-act" id="countdown" style="color:var(--turquesa)">· 23s</span>
+    <span class="ultima-act" id="ultima-act">actualizando...</span> <span class="ultima-act" id="countdown" style="color:var(--turquesa)"></span>
   </div>
 
-  <div id="error-msg" style="display: none;">
+  <div id="error-msg">
     ⚠️ Sin conexión con los servidores sísmicos.<br>
     Verifica tu internet y recarga la página.<br><br>
     <a href="https://earthquake.usgs.gov/earthquakes/map/" target="_blank">Ver mapa directo en USGS →</a>
   </div>
 
-  <div id="estado-carga" style="display: none;">
+  <div id="estado-carga">
     <div class="spinner"></div>
     Conectando con servidores sísmicos...
   </div>
 
-  <div class="lista-sismos" id="lista-sismos">
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-alto">
-            <div class="mag-num">4.7</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">54 km al norte de El Limón, Venezuela</div>
-            <div class="sismo-fecha">26/06/2026, 06:16 p. m. · hace 8 h</div>
-            <div class="sismo-meta">Profundidad: 10.0 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-alto">
-            <div class="mag-num">4.4</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">17 km al oeste-suroeste de Morón, Venezuela</div>
-            <div class="sismo-fecha">26/06/2026, 12:19 a. m. · hace 1 d</div>
-            <div class="sismo-meta">Profundidad: 10.0 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-alto">
-            <div class="mag-num">4.4</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">5 km al noreste de Guatire, Venezuela</div>
-            <div class="sismo-fecha">25/06/2026, 01:48 a. m. · hace 2 d</div>
-            <div class="sismo-meta">Profundidad: 10.0 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-alto">
-            <div class="mag-num">4.5</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">13 km al norte de Caucagüito, Venezuela</div>
-            <div class="sismo-fecha">24/06/2026, 06:23 p. m. · hace 2 d</div>
-            <div class="sismo-meta">Profundidad: 10.0 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-critico">
-            <div class="mag-num">7.5</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">28 km al sureste de Yumare, Venezuela</div>
-            <div class="sismo-fecha">24/06/2026, 06:05 p. m. · hace 2 d</div>
-            <div class="sismo-meta">Profundidad: 10.0 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-critico">
-            <div class="mag-num">7.2</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">23 km al sureste de Yumare, Venezuela</div>
-            <div class="sismo-fecha">24/06/2026, 06:04 p. m. · hace 2 d</div>
-            <div class="sismo-meta">Profundidad: 20.3 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-alto">
-            <div class="mag-num">4.6</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">33 km al este de Boconó, Venezuela</div>
-            <div class="sismo-fecha">17/06/2026, 09:23 p. m. · hace 9 d</div>
-            <div class="sismo-meta">Profundidad: 10.0 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-alto">
-            <div class="mag-num">4.7</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">1 km al sureste de Villanueva, Colombia</div>
-            <div class="sismo-fecha">17/06/2026, 06:51 a. m. · hace 9 d</div>
-            <div class="sismo-meta">Profundidad: 164.0 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-alto">
-            <div class="mag-num">4.3</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">1 km al sur-suroeste de Jordán, Colombia</div>
-            <div class="sismo-fecha">17/06/2026, 12:11 a. m. · hace 10 d</div>
-            <div class="sismo-meta">Profundidad: 161.8 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-alto">
-            <div class="mag-num">4.3</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">22 km al oeste de Ospino, Venezuela</div>
-            <div class="sismo-fecha">13/06/2026, 08:39 p. m. · hace 13 d</div>
-            <div class="sismo-meta">Profundidad: 12.1 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-alto">
-            <div class="mag-num">4.8</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">28 km al suroeste de El Tocuyo, Venezuela</div>
-            <div class="sismo-fecha">04/06/2026, 07:41 p. m. · hace 22 d</div>
-            <div class="sismo-meta">Profundidad: 10.0 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-critico">
-            <div class="mag-num">5.6</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">133 km al sur-sureste de Oistins, Barbados</div>
-            <div class="sismo-fecha">30/05/2026, 05:27 p. m. · hace 27 d</div>
-            <div class="sismo-meta">Profundidad: 35.0 km</div>
-          </div>
-        </div>
-        <div class="sismo-card ">
-          <div class="magnitud-badge mag-alto">
-            <div class="mag-num">4.7</div>
-            <div class="mag-label">Mw</div>
-          </div>
-          <div class="sismo-info">
-            <div class="sismo-lugar">69 km al norte de Güiria, Venezuela</div>
-            <div class="sismo-fecha">29/05/2026, 08:31 p. m. · hace 28 d</div>
-            <div class="sismo-meta">Profundidad: 129.8 km</div>
-          </div>
-        </div></div>
+  <div class="lista-sismos" id="lista-sismos"></div>
 
   <button class="compartir-btn" onclick="compartirWhatsApp()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
     Compartir por WhatsApp
   </button>
@@ -571,7 +428,7 @@
         <div class="aux-titulo">Hemorragias</div>
         <div class="aux-texto">Presión directa y firme. Si traspasa la tela, añade más encima — no retires la primera.</div>
       </div>
-      <div class="aux-card" onclick="mostrarSOS()" style="cursor:pointer; border-color: var(--turquesa);">
+      <div class="aux-card" onclick="document.getElementById('modal-sos').classList.add('activo')" style="cursor:pointer; border-color: var(--turquesa); background: linear-gradient(135deg,#0a2020,var(--panel));">
         <div class="aux-icono">🆘</div>
         <div class="aux-titulo" style="color:var(--turquesa);">Protocolo SOS →</div>
         <div class="aux-texto">Activa alarma sísmica y modo emergencia en tu Android.</div>
@@ -580,86 +437,11 @@
   </div>
 
 
-<!-- PÁGINA SOS INTERNA -->
-<div class="pagina" id="pagina-sos">
-  <div class="sos-header">
-    <button class="sos-back" onclick="volverInicio()">← Volver</button>
-    <div class="sos-titulo">🆘 Protocolo SOS</div>
-  </div>
-
-  <!-- SECCIÓN 1: ALARMA SÍSMICA ANDROID -->
-  <div class="sos-seccion">
-    <div class="sos-seccion-titulo">
-      📳 Activar Alarma Sísmica en Android
-    </div>
-
-    <div class="sos-paso">
-      <div class="sos-num">1</div>
-      <div class="sos-paso-texto">Abre <strong>Ajustes</strong> en tu teléfono Android.</div>
-    </div>
-    <div class="sos-paso">
-      <div class="sos-num">2</div>
-      <div class="sos-paso-texto">Ve a <strong>Seguridad y emergencias</strong> (en algunos modelos: <strong>Bienestar digital y controles parentales</strong> → Emergencias).</div>
-    </div>
-    <div class="sos-paso">
-      <div class="sos-num">3</div>
-      <div class="sos-paso-texto">Selecciona <strong>Alertas de emergencia inalámbricas</strong>.</div>
-    </div>
-    <div class="sos-paso">
-      <div class="sos-num">4</div>
-      <div class="sos-paso-texto">Activa <strong>Alertas sísmicas</strong> o <strong>Alertas de terremotos</strong> — asegúrate de que el interruptor esté en <strong>ON</strong>.</div>
-    </div>
-    <div class="sos-paso">
-      <div class="sos-num">5</div>
-      <div class="sos-paso-texto">Activa también <strong>Alertas extremas</strong> y <strong>Alertas graves</strong> para cobertura completa.</div>
-    </div>
-
-    <div class="sos-nota">
-      ⚠️ En teléfonos Samsung busca: <strong>Ajustes → Seguridad y emergencia → Alertas de emergencia inalámbricas</strong><br>
-      En Xiaomi/MIUI: <strong>Ajustes → Contraseñas y seguridad → Emergencias → Alertas de emergencia</strong>
-    </div>
-  </div>
-
-  <!-- SECCIÓN 2: MODO EMERGENCIA -->
-  <div class="sos-seccion">
-    <div class="sos-seccion-titulo">
-      🔴 Activar Modo Emergencia y Contactos SOS
-    </div>
-
-    <div class="sos-paso">
-      <div class="sos-num ocre">1</div>
-      <div class="sos-paso-texto">Ve a <strong>Ajustes → Seguridad y emergencias → Contactos de emergencia</strong>.</div>
-    </div>
-    <div class="sos-paso">
-      <div class="sos-num ocre">2</div>
-      <div class="sos-paso-texto">Toca <strong>Agregar contacto</strong> y selecciona de tu lista las personas de confianza que deben recibir tu alerta.</div>
-    </div>
-    <div class="sos-paso">
-      <div class="sos-num ocre">3</div>
-      <div class="sos-paso-texto">Activa <strong>Compartir ubicación automáticamente</strong> con esos contactos cuando se active la emergencia.</div>
-    </div>
-    <div class="sos-paso">
-      <div class="sos-num ocre">4</div>
-      <div class="sos-paso-texto"><strong>Para activar el SOS rápido:</strong> Presiona el botón de encendido <strong>5 veces seguidas</strong> — se enviará alerta con tu ubicación a tus contactos de emergencia.</div>
-    </div>
-    <div class="sos-paso">
-      <div class="sos-num ocre">5</div>
-      <div class="sos-paso-texto">En <strong>Modo emergencia</strong> (mantén presionado el botón de encendido → Modo emergencia) el teléfono reduce consumo de batería y mantiene activas solo llamadas, mensajes y ubicación.</div>
-    </div>
-
-    <div class="sos-nota">
-      📍 En Samsung: <strong>mantén presionado el botón lateral → Modo de emergencia</strong><br>
-      En Pixel/Android puro: <strong>Ajustes → Seguridad → SOS de emergencia</strong>
-    </div>
-  </div>
-
-</div>
-
 </main>
 
 </div><!-- fin pagina-principal -->
 <footer>
-  InfoSisVE · Datos: <a href="https://earthquake.usgs.gov/" target="_blank">USGS Earthquake Hazards Program</a><br>
+  InfoSisVE · Datos: <a href="https://earthquake.usgs.gov" target="_blank">USGS Earthquake Hazards Program</a><br>
   Actualización automática cada 30 seg · Emergencias Venezuela: <strong>171</strong>
 </footer>
 
@@ -814,7 +596,7 @@
   <div class="modal-box">
     <div class="modal-header">
       <div class="modal-titulo">🆘 Guía de Emergencia</div>
-      <button class="modal-cerrar" onclick="document.getElementById(&#39;modal-sos&#39;).classList.remove(&#39;activo&#39;)">✕</button>
+      <button class="modal-cerrar" onclick="document.getElementById('modal-sos').classList.remove('activo')">✕</button>
     </div>
 
     <!-- ANDROID -->
@@ -865,19 +647,19 @@
       <div class="app-recomendada">
         <div class="app-icono">📡</div>
         <div>
-          <div class="app-nombre">My Earthquake Alerts &amp; Feed</div>
+          <div class="app-nombre">My Earthquake Alerts & Feed</div>
           <div class="app-desc">Notificaciones personalizadas por magnitud y distancia · iOS y Android</div>
         </div>
       </div>
     </div>
 
-    <button onclick="document.getElementById(&#39;modal-sos&#39;).classList.remove(&#39;activo&#39;)" style="width:100%;padding:14px;background:var(--turquesa);color:#000;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px;">
+    <button onclick="document.getElementById('modal-sos').classList.remove('activo')" style="width:100%;padding:14px;background:var(--turquesa);color:#000;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px;">
       ✓ Entendido
     </button>
   </div>
 </div>
-
-
+</body>
+</html>
 <script>
 // Sobreescribir el intervalo con countdown visual
 (function() {
@@ -901,4 +683,3 @@
   }, INTERVALO * 1000);
 })();
 </script>
-</body></html>
