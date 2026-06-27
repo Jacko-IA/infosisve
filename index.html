@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)file:///C:/Users/JACK/Downloads/index.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="InfoSisVE — Monitor de réplicas sísmicas en Venezuela en tiempo real.">
+  <title>InfoSisVE — Monitor Sísmico Venezuela</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link href="./index_files/css2" rel="stylesheet">
+  <style>
+    :root {
+      --rojo:    #E63946;
+      --naranja: #F4A261;
+      --amarillo:#E9C46A;
+      --fondo:   #0B0F1A;
+      --panel:   #131929;
+      --borde:   #1E2D4A;
+      --texto:   #E8EDF5;
+      --muted:   #6B7FA3;
+      --verde:   #2EC4B6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--fondo);
+      color: var(--texto);
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--panel);
+      border-bottom: 1px solid var(--borde);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--rojo);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .logo-text { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+    .logo-text span { color: var(--rojo); }
+
+    .pulso {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--verde);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%; background: var(--verde);
+      animation: pulsar 1.4s ease-in-out infinite;
+    }
+    @keyframes pulsar {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    /* BANNER */
+    .emergencia {
+      background: linear-gradient(90deg, #3D0000, #1a0a00);
+      border-bottom: 2px solid var(--rojo);
+      padding: 10px 20px;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px;
+    }
+    .emergencia strong { color: var(--naranja); }
+    .emergencia a {
+      color: var(--rojo); font-weight: 700;
+      text-decoration: none; font-size: 15px;
+      margin-left: auto; white-space: nowrap;
+    }
+
+    /* STATS */
+    .stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--borde);
+      border-bottom: 1px solid var(--borde);
+    }
+    .stat { background: var(--panel); padding: 14px 16px; text-align: center; }
+    .stat-valor {
+      font-size: 26px; font-weight: 700;
+      font-family: 'JetBrains Mono', monospace; line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px; color: var(--muted);
+      margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+
+    /* MAIN */
+    main { padding: 16px; max-width: 680px; margin: 0 auto; }
+
+    .seccion-titulo {
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--muted);
+      margin-bottom: 10px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .ultima-act { font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+
+    /* TARJETA SISMO */
+    .lista-sismos { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+
+    .sismo-card {
+      background: var(--panel);
+      border: 1px solid var(--borde);
+      border-radius: 10px; padding: 14px 16px;
+      display: grid; grid-template-columns: 56px 1fr auto;
+      align-items: center; gap: 14px;
+      transition: border-color 0.2s;
+    }
+    .sismo-card:hover { border-color: var(--muted); }
+    .sismo-card.nuevo { animation: flashCard 1.2s ease-out; }
+    @keyframes flashCard {
+      0%   { border-color: var(--verde); background: #0d2020; }
+      100% { border-color: var(--borde); background: var(--panel); }
+    }
+
+    .magnitud-badge {
+      width: 52px; height: 52px; border-radius: 8px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-weight: 700; font-family: 'JetBrains Mono', monospace;
+    }
+    .mag-num  { font-size: 22px; line-height: 1; }
+    .mag-label { font-size: 9px; opacity: 0.8; text-transform: uppercase; }
+
+    .mag-bajo    { background: #1a2e2a; color: var(--verde); }
+    .mag-medio   { background: #2e2400; color: var(--amarillo); }
+    .mag-alto    { background: #2e1200; color: var(--naranja); }
+    .mag-critico { background: #2e0000; color: var(--rojo); }
+
+    .sismo-lugar  { font-size: 14px; font-weight: 600; line-height: 1.3; margin-bottom: 4px; }
+    .sismo-meta   { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+    .sismo-tiempo { font-size: 11px; color: var(--muted); text-align: right; white-space: nowrap; font-family: 'JetBrains Mono', monospace; }
+
+    /* PRIMEROS AUXILIOS */
+    .auxilios { margin-bottom: 24px; }
+    .aux-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .aux-card {
+      background: var(--panel); border: 1px solid var(--borde);
+      border-radius: 10px; padding: 14px;
+    }
+    .aux-icono  { font-size: 22px; margin-bottom: 6px; }
+    .aux-titulo { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .aux-texto  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* FUENTE BADGE */
+    .fuente-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 10px; font-family: 'JetBrains Mono', monospace;
+      color: var(--muted); background: var(--borde);
+      border-radius: 4px; padding: 2px 7px; margin-left: 8px;
+    }
+    .fuente-badge.proxy { color: var(--amarillo); }
+
+    /* ESTADO */
+    #estado-carga {
+      text-align: center; padding: 40px 20px;
+      color: var(--muted); font-size: 14px;
+    }
+    .spinner {
+      width: 32px; height: 32px;
+      border: 3px solid var(--borde); border-top-color: var(--verde);
+      border-radius: 50%; animation: spin 0.8s linear infinite;
+      margin: 0 auto 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    #error-msg {
+      display: none;
+      background: #2e0000; border: 1px solid var(--rojo);
+      border-radius: 10px; padding: 16px;
+      text-align: center; font-size: 13px; margin-bottom: 16px;
+    }
+    #error-msg a { color: var(--naranja); }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 20px;
+      font-size: 11px; color: var(--muted);
+      border-top: 1px solid var(--borde); margin-top: 8px;
+    }
+    footer a { color: var(--muted); }
+
+    @media (max-width: 400px) {
+      .stat-valor { font-size: 22px; }
+      .sismo-card { grid-template-columns: 48px 1fr; }
+      .sismo-tiempo { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">🌎</div>
+    <div class="logo-text">Info<span>Sis</span>VE</div>
+  </div>
+  <div class="pulso"><div class="dot"></div> EN VIVO</div>
+</header>
+
+<div class="emergencia">
+  <span>🚨 <strong>Emergencia activa</strong> — Venezuela · Jun 2026</span>
+  <a href="tel:171">📞 171</a>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-valor" id="stat-replicas" style="color:var(--naranja)">13</div>
+    <div class="stat-label">Réplicas 7 días</div>
+  </div>
+  <div class="stat">
+    <div class="stat-valor" id="stat-mayor" style="color:var(--rojo)">7.5</div>
+    <div class="stat-label">Mayor magnitud</div>
+  </div>
+  <div class="stat">
+    <div class="stat-valor" id="stat-reciente" style="color:var(--verde)">hace 3 h</div>
+    <div class="stat-label">Última réplica</div>
+  </div>
+</div>
+
+<main>
+
+  <div class="seccion-titulo">
+    <span>
+      Actividad reciente
+      <span class="fuente-badge" id="fuente-badge">USGS</span>
+    </span>
+    <span class="ultima-act" id="ultima-act">act. 09:44 p. m.</span>
+  </div>
+
+  <div id="error-msg" style="display: none;">
+    ⚠️ Sin conexión con los servidores sísmicos.<br>
+    Verifica tu internet y recarga la página.<br><br>
+    <a href="https://earthquake.usgs.gov/earthquakes/map/" target="_blank">Ver mapa directo en USGS →</a>
+  </div>
+
+  <div id="estado-carga" style="display: none;">
+    <div class="spinner"></div>
+    Conectando con servidores sísmicos...
+  </div>
+
+  <div class="lista-sismos" id="lista-sismos">
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-alto">
+            <div class="mag-num">4.7</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">54 km N de El Limón, VE</div>
+            <div class="sismo-meta">Prof. 10 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 3 h</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-alto">
+            <div class="mag-num">4.4</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">17 km WSW de Morón, VE</div>
+            <div class="sismo-meta">Prof. 10 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 21 h</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-alto">
+            <div class="mag-num">4.4</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">5 km NE de Guatire, VE</div>
+            <div class="sismo-meta">Prof. 10 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 1 d</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-alto">
+            <div class="mag-num">4.5</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">13 km N de Caucagüito, VE</div>
+            <div class="sismo-meta">Prof. 10 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 2 d</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-critico">
+            <div class="mag-num">7.5</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">28 km SE de Yumare, VE</div>
+            <div class="sismo-meta">Prof. 10 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 2 d</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-critico">
+            <div class="mag-num">7.2</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">23 km SE de Yumare, VE</div>
+            <div class="sismo-meta">Prof. 20 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 2 d</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-alto">
+            <div class="mag-num">4.6</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">33 km E de Boconó, VE</div>
+            <div class="sismo-meta">Prof. 10 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 9 d</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-alto">
+            <div class="mag-num">4.7</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">1 km SE de Villanueva, Colombia</div>
+            <div class="sismo-meta">Prof. 164 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 9 d</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-alto">
+            <div class="mag-num">4.3</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">1 km SSW de Jordán, Colombia</div>
+            <div class="sismo-meta">Prof. 162 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 9 d</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-alto">
+            <div class="mag-num">4.3</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">22 km W de Ospino, VE</div>
+            <div class="sismo-meta">Prof. 12 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 13 d</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-alto">
+            <div class="mag-num">4.8</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">28 km SW de El Tocuyo, VE</div>
+            <div class="sismo-meta">Prof. 10 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 22 d</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-critico">
+            <div class="mag-num">5.6</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">133 km SSE de Oistins, Barbados</div>
+            <div class="sismo-meta">Prof. 35 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 27 d</div>
+        </div>
+        <div class="sismo-card ">
+          <div class="magnitud-badge mag-alto">
+            <div class="mag-num">4.7</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">69 km N de Güiria, VE</div>
+            <div class="sismo-meta">Prof. 130 km</div>
+          </div>
+          <div class="sismo-tiempo">hace 28 d</div>
+        </div></div>
+
+  <div class="auxilios">
+    <div class="seccion-titulo"><span>Primeros auxilios</span></div>
+    <div class="aux-grid">
+      <div class="aux-card">
+        <div class="aux-icono">🏠</div>
+        <div class="aux-titulo">Durante el sismo</div>
+        <div class="aux-texto">Agáchate, cúbrete bajo una mesa sólida y agárrate. Aléjate de ventanas.</div>
+      </div>
+      <div class="aux-card">
+        <div class="aux-icono">🚪</div>
+        <div class="aux-titulo">Después del sismo</div>
+        <div class="aux-texto">Sal con calma. Aléjate de estructuras dañadas. Espera réplicas afuera.</div>
+      </div>
+      <div class="aux-card">
+        <div class="aux-icono">🩸</div>
+        <div class="aux-titulo">Hemorragias</div>
+        <div class="aux-texto">Presión directa y firme. Si traspasa la tela, añade más encima — no retires la primera.</div>
+      </div>
+      <div class="aux-card">
+        <div class="aux-icono">🆘</div>
+        <div class="aux-titulo">Atrapado</div>
+        <div class="aux-texto">Golpea tuberías — no grites para ahorrar oxígeno. No enciendas fuego.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  InfoSisVE · Datos: <a href="https://earthquake.usgs.gov/" target="_blank">USGS Earthquake Hazards Program</a><br>
+  Actualización automática cada 2 min · Emergencias Venezuela: <strong>171</strong>
+</footer>
+
+<script>
+  // ── PARÁMETROS ZONA VENEZUELA ──
+  const PARAMS = 'format=geojson&minlatitude=1&maxlatitude=14&minlongitude=-74&maxlongitude=-59&orderby=time&limit=30&minmagnitude=1.5';
+
+  // Fuentes en orden de prioridad (directa → proxies CORS gratuitos)
+  const FUENTES = [
+    {
+      url: `https://earthquake.usgs.gov/fdsnws/event/1/query?${PARAMS}`,
+      label: 'USGS',
+      proxy: false
+    },
+    {
+      url: `https://corsproxy.io/?url=https://earthquake.usgs.gov/fdsnws/event/1/query?${PARAMS}`,
+      label: 'USGS (proxy)',
+      proxy: true
+    },
+    {
+      url: `https://api.allorigins.win/raw?url=${encodeURIComponent('https://earthquake.usgs.gov/fdsnws/event/1/query?' + PARAMS)}`,
+      label: 'USGS (mirror)',
+      proxy: true
+    }
+  ];
+
+  let ultimoId    = null;
+  let fuenteActual = 'USGS';
+
+  function clasesMag(m) {
+    if (m >= 5.0) return 'mag-critico';
+    if (m >= 4.0) return 'mag-alto';
+    if (m >= 3.0) return 'mag-medio';
+    return 'mag-bajo';
+  }
+
+  function tiempoRelativo(ms) {
+    const diff = Date.now() - ms;
+    const min  = Math.floor(diff / 60000);
+    const hrs  = Math.floor(diff / 3600000);
+    const dias = Math.floor(diff / 86400000);
+    if (min < 1)   return 'ahora mismo';
+    if (min < 60)  return `hace ${min} min`;
+    if (hrs < 24)  return `hace ${hrs} h`;
+    return `hace ${dias} d`;
+  }
+
+  function lugarLegible(place) {
+    if (!place) return 'Venezuela';
+    return place.replace('of ', 'de ').replace('Venezuela', 'VE');
+  }
+
+  function renderLista(features, esPrimeraCarga) {
+    const lista = document.getElementById('lista-sismos');
+    const primerIdNuevo = features[0]?.id;
+    const hayNuevo = !esPrimeraCarga && primerIdNuevo && primerIdNuevo !== ultimoId;
+
+    lista.innerHTML = features.map((f, i) => {
+      const p    = f.properties;
+      const mag  = p.mag?.toFixed(1) ?? '?';
+      const prof = f.geometry?.coordinates?.[2]?.toFixed(0) ?? '?';
+      const nuevo = (i === 0 && hayNuevo) ? 'nuevo' : '';
+      return `
+        <div class="sismo-card ${nuevo}">
+          <div class="magnitud-badge ${clasesMag(p.mag)}">
+            <div class="mag-num">${mag}</div>
+            <div class="mag-label">Mw</div>
+          </div>
+          <div class="sismo-info">
+            <div class="sismo-lugar">${lugarLegible(p.place)}</div>
+            <div class="sismo-meta">Prof. ${prof} km</div>
+          </div>
+          <div class="sismo-tiempo">${tiempoRelativo(p.time)}</div>
+        </div>`;
+    }).join('');
+
+    ultimoId = primerIdNuevo ?? null;
+  }
+
+  function actualizarStats(features) {
+    document.getElementById('stat-replicas').textContent = features.length;
+    const mags = features.map(f => f.properties.mag).filter(Boolean);
+    document.getElementById('stat-mayor').textContent = mags.length ? Math.max(...mags).toFixed(1) : '—';
+    const ultima = features[0]?.properties?.time;
+    document.getElementById('stat-reciente').textContent = ultima ? tiempoRelativo(ultima) : '—';
+  }
+
+  // Intenta cada fuente en orden hasta que una responda
+  async function fetchConFallback() {
+    for (const fuente of FUENTES) {
+      try {
+        const res = await fetch(fuente.url, { signal: AbortSignal.timeout(8000) });
+        if (!res.ok) continue;
+        const data = await res.json();
+        if (!data.features) continue;
+
+        // Actualizar badge de fuente
+        const badge = document.getElementById('fuente-badge');
+        badge.textContent = fuente.label;
+        badge.className = 'fuente-badge' + (fuente.proxy ? ' proxy' : '');
+
+        return data.features;
+      } catch (_) {
+        // Intenta la siguiente fuente
+        continue;
+      }
+    }
+    return null; // Todas fallaron
+  }
+
+  let esPrimeraCarga = true;
+
+  async function cargar() {
+    const features = await fetchConFallback();
+
+    if (!features) {
+      document.getElementById('estado-carga').style.display = 'none';
+      document.getElementById('error-msg').style.display    = 'block';
+      return;
+    }
+
+    document.getElementById('estado-carga').style.display = 'none';
+    document.getElementById('error-msg').style.display    = 'none';
+
+    if (features.length === 0) {
+      document.getElementById('lista-sismos').innerHTML =
+        '<div style="text-align:center;padding:30px;color:var(--muted)">Sin actividad registrada.</div>';
+    } else {
+      renderLista(features, esPrimeraCarga);
+      actualizarStats(features);
+    }
+
+    document.getElementById('ultima-act').textContent =
+      'act. ' + new Date().toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit' });
+
+    esPrimeraCarga = false;
+  }
+
+  cargar();
+  setInterval(cargar, 120000);
+</script>
+
+
+</body></html>
