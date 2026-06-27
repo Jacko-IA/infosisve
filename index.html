@@ -161,6 +161,10 @@
       font-size: 11px; color: #FFFFFF;
       font-family: 'JetBrains Mono', monospace;
     }
+    .sismo-nivel {
+      font-size: 11px; color: var(--subtexto);
+      margin-top: 2px;
+    }
 
     /* BADGE FUENTE */
     .fuente-badge {
@@ -446,7 +450,7 @@
 </footer>
 
 <script>
-  const PARAMS = 'format=geojson&minlatitude=1&maxlatitude=14&minlongitude=-74&maxlongitude=-59&orderby=time&limit=50&minmagnitude=1.5';
+  const PARAMS = 'format=geojson&minlatitude=1&maxlatitude=14&minlongitude=-74&maxlongitude=-59&orderby=time&limit=100&minmagnitude=0.5';
 
   const FUENTES = [
     { url: `https://earthquake.usgs.gov/fdsnws/event/1/query?${PARAMS}`, label: 'USGS', proxy: false },
@@ -514,6 +518,10 @@
       const mag  = p.mag?.toFixed(1) ?? '?';
       const prof = f.geometry?.coordinates?.[2]?.toFixed(1) ?? '?';
       const nuevo = (i === 0 && hayNuevo) ? 'nuevo' : '';
+      const nivel = p.mag >= 5.0 ? '⚠️ Fuerte — mantente alerta'
+        : p.mag >= 4.0 ? '🟠 Moderado — precaución'
+        : p.mag >= 3.0 ? '🟡 Leve — generalmente perceptible'
+        : '🟢 Micro — imperceptible o casi nada';
 
       return `
         <div class="sismo-card ${nuevo}">
@@ -525,6 +533,7 @@
             <div class="sismo-lugar">${lugarLegible(p.place)}</div>
             <div class="sismo-fecha">${fechaVET(p.time)} · ${tiempoRelativo(p.time)}</div>
             <div class="sismo-meta">Profundidad: ${prof} km</div>
+            <div class="sismo-nivel">${nivel}</div>
           </div>
         </div>`;
     }).join('');
