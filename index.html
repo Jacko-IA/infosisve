@@ -365,7 +365,7 @@
 </header>
 
 <div class="emergencia">
-  <span>⚠️ <strong>Emergencia activa</strong> — Venezuela · Jun 2026</span>
+  <span>⚠️ <strong>Emergencia activa</strong> — Venezuela · Jun 2026 · <span style="color:var(--turquesa)">por Jack'O con IA</span></span>
   <a href="tel:171">📞 171</a>
 </div>
 
@@ -446,7 +446,8 @@
 </div><!-- fin pagina-principal -->
 <footer>
   InfoSisVE · Datos: <a href="https://earthquake.usgs.gov" target="_blank">USGS Earthquake Hazards Program</a><br>
-  Actualización automática cada 30 seg · Emergencias Venezuela: <strong>171</strong>
+  Actualización automática cada 30 seg · Emergencias Venezuela: <strong>171</strong><br>
+  <span style="color:var(--turquesa)">Desarrollado por Jack'O con IA · Aporte solidario Venezuela 2026</span>
 </footer>
 
 <script>
@@ -594,13 +595,13 @@
 
   function compartirTelegram() {
     const url   = 'https://jacko-ia.github.io/infosisve';
-    const texto = `🌎 InfoSisVE — Monitor de réplicas sísmicas en Venezuela en tiempo real.\n\nConsulta la actividad sísmica actualizada cada 30 segundos:\n${url}\n\nSin necesidad de VPN. Comparte con quien lo necesite.`;
+    const texto = `🌎 InfoSisVE — Monitor Sísmico Venezuela\n\nDatos en tiempo real · Réplicas actualizadas cada 30 seg · Sin VPN\n\n${url}\n\nDesarrollado por Jack'O con IA como aporte solidario ante la emergencia. Difunde entre tus contactos.`;
     window.open('https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(texto), '_blank');
   }
 
   function compartirWhatsApp() {
     const url   = 'https://jacko-ia.github.io/infosisve';
-    const texto = `🌎 *InfoSisVE* — Monitor de réplicas sísmicas en Venezuela en tiempo real.\n\nConsulta la actividad sísmica actualizada cada 2 minutos:\n${url}\n\n_Sin necesidad de VPN. Comparte con quien lo necesite._`;
+    const texto = `🌎 *InfoSisVE* — Monitor Sísmico Venezuela\n\nDatos en tiempo real · Réplicas actualizadas cada 30 seg · Sin VPN\n\n${url}\n\n_Desarrollado por Jack'O con IA como aporte solidario ante la emergencia. Difunde entre tus contactos._`;
     window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
   }
 
