@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0042)file:///C:/Users/JACK/Downloads/index.html -->
+<!-- saved from url=(0044)file:///C:/Users/JACK/Downloads/index_5.html -->
 <html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -9,15 +9,16 @@
   <link href="./index_files/css2" rel="stylesheet">
   <style>
     :root {
-      --rojo:    #E63946;
-      --naranja: #F4A261;
-      --amarillo:#E9C46A;
-      --fondo:   #0B0F1A;
-      --panel:   #131929;
-      --borde:   #1E2D4A;
-      --texto:   #E8EDF5;
-      --muted:   #6B7FA3;
-      --verde:   #2EC4B6;
+      --ocre:      #D4A017;
+      --naranja:   #F4A261;
+      --amarillo:  #E9C46A;
+      --turquesa:  #2EC4B6;
+      --fondo:     #0B0F1A;
+      --panel:     #131929;
+      --borde:     #2A3A5C;
+      --texto:     #FFFFFF;
+      --subtexto:  #C8D4E8;
+      --muted:     #8FA8CC;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,53 +33,51 @@
     /* HEADER */
     header {
       background: var(--panel);
-      border-bottom: 1px solid var(--borde);
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      border-bottom: 2px solid var(--borde);
+      padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
     }
 
-    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo { display: flex; align-items: center; gap: 12px; }
     .logo-icon {
-      width: 36px; height: 36px;
-      background: var(--rojo);
-      border-radius: 8px;
+      width: 44px; height: 44px;
+      background: #FFFFFF;
+      border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
+      font-size: 26px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
-    .logo-text { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
-    .logo-text span { color: var(--rojo); }
+    .logo-text { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+    .logo-text .sis { color: var(--ocre); }
 
     .pulso {
       display: flex; align-items: center; gap: 6px;
-      font-size: 12px; color: var(--verde);
+      font-size: 12px; color: var(--turquesa);
       font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
     }
     .dot {
       width: 8px; height: 8px;
-      border-radius: 50%; background: var(--verde);
+      border-radius: 50%; background: var(--turquesa);
       animation: pulsar 1.4s ease-in-out infinite;
     }
     @keyframes pulsar {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.4; transform: scale(0.7); }
+      50%       { opacity: 0.3; transform: scale(0.6); }
     }
 
     /* BANNER */
     .emergencia {
-      background: linear-gradient(90deg, #3D0000, #1a0a00);
-      border-bottom: 2px solid var(--rojo);
+      background: #1C1A00;
+      border-bottom: 2px solid var(--ocre);
       padding: 10px 20px;
       display: flex; align-items: center; gap: 10px;
-      font-size: 13px;
+      font-size: 13px; color: #FFFFFF;
     }
-    .emergencia strong { color: var(--naranja); }
+    .emergencia strong { color: var(--ocre); }
     .emergencia a {
-      color: var(--rojo); font-weight: 700;
+      color: var(--turquesa); font-weight: 700;
       text-decoration: none; font-size: 15px;
       margin-left: auto; white-space: nowrap;
     }
@@ -86,8 +85,8 @@
     /* STATS */
     .stats {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--borde);
-      border-bottom: 1px solid var(--borde);
+      gap: 2px; background: var(--borde);
+      border-bottom: 2px solid var(--borde);
     }
     .stat { background: var(--panel); padding: 14px 16px; text-align: center; }
     .stat-valor {
@@ -96,19 +95,22 @@
     }
     .stat-label {
       font-size: 11px; color: var(--muted);
-      margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px;
+      margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;
     }
 
     /* MAIN */
     main { padding: 16px; max-width: 680px; margin: 0 auto; }
 
     .seccion-titulo {
-      font-size: 11px; text-transform: uppercase;
+      font-size: 13px; text-transform: uppercase;
       letter-spacing: 1.5px; color: var(--muted);
       margin-bottom: 10px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .ultima-act { font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+    .ultima-act {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; color: var(--turquesa); font-weight: 600;
+    }
 
     /* TARJETA SISMO */
     .lista-sismos { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
@@ -117,54 +119,134 @@
       background: var(--panel);
       border: 1px solid var(--borde);
       border-radius: 10px; padding: 14px 16px;
-      display: grid; grid-template-columns: 56px 1fr auto;
+      display: grid; grid-template-columns: 62px 1fr;
       align-items: center; gap: 14px;
       transition: border-color 0.2s;
     }
-    .sismo-card:hover { border-color: var(--muted); }
+    .sismo-card:hover { border-color: var(--turquesa); }
     .sismo-card.nuevo { animation: flashCard 1.2s ease-out; }
     @keyframes flashCard {
-      0%   { border-color: var(--verde); background: #0d2020; }
-      100% { border-color: var(--borde); background: var(--panel); }
+      0%   { border-color: var(--turquesa); background: #0a2020; }
+      100% { border-color: var(--borde);    background: var(--panel); }
     }
 
+    /* BADGE MAGNITUD */
     .magnitud-badge {
-      width: 52px; height: 52px; border-radius: 8px;
+      width: 58px; height: 58px; border-radius: 10px;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       font-weight: 700; font-family: 'JetBrains Mono', monospace;
     }
-    .mag-num  { font-size: 22px; line-height: 1; }
-    .mag-label { font-size: 9px; opacity: 0.8; text-transform: uppercase; }
+    .mag-num   { font-size: 26px; line-height: 1; color: #FFFFFF; }
+    .mag-label { font-size: 9px; color: rgba(255,255,255,0.85); text-transform: uppercase; margin-top: 2px; }
 
-    .mag-bajo    { background: #1a2e2a; color: var(--verde); }
-    .mag-medio   { background: #2e2400; color: var(--amarillo); }
-    .mag-alto    { background: #2e1200; color: var(--naranja); }
-    .mag-critico { background: #2e0000; color: var(--rojo); }
+    /* fondos más saturados para mejor contraste */
+    .mag-bajo    { background: #0D5C52; }  /* turquesa oscuro */
+    .mag-medio   { background: #7A5C00; }  /* ocre oscuro     */
+    .mag-alto    { background: #8C3A00; }  /* naranja oscuro  */
+    .mag-critico { background: #8C0A0A; }  /* rojo oscuro     */
 
-    .sismo-lugar  { font-size: 14px; font-weight: 600; line-height: 1.3; margin-bottom: 4px; }
-    .sismo-meta   { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
-    .sismo-tiempo { font-size: 11px; color: var(--muted); text-align: right; white-space: nowrap; font-family: 'JetBrains Mono', monospace; }
+    /* INFO SISMO */
+    .sismo-info { display: flex; flex-direction: column; gap: 4px; }
+
+    .sismo-lugar {
+      font-size: 14px; font-weight: 600;
+      color: #FFFFFF; line-height: 1.3;
+    }
+    .sismo-fecha {
+      font-size: 12px; color: var(--amarillo);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .sismo-meta {
+      font-size: 11px; color: #FFFFFF;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* BADGE FUENTE */
+    .fuente-badge {
+      display: inline-flex; align-items: center;
+      font-size: 10px; font-family: 'JetBrains Mono', monospace;
+      color: #FFFFFF; background: var(--borde);
+      border-radius: 4px; padding: 2px 7px; margin-left: 8px;
+    }
+    .fuente-badge.proxy { color: var(--amarillo); }
+
+
+    /* PÁGINA SOS INTERNA */
+    .pagina {
+      display: none;
+    }
+    .pagina.activa {
+      display: block;
+    }
+    .sos-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; padding-bottom: 14px;
+      border-bottom: 1px solid var(--borde);
+    }
+    .sos-back {
+      background: var(--borde); border: none; color: #FFFFFF;
+      border-radius: 8px; padding: 8px 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .sos-back:hover { background: var(--muted); }
+    .sos-titulo { font-size: 18px; font-weight: 700; color: #FFFFFF; }
+
+    .sos-seccion {
+      background: var(--panel); border: 1px solid var(--borde);
+      border-radius: 12px; padding: 18px; margin-bottom: 14px;
+    }
+    .sos-seccion-titulo {
+      font-size: 15px; font-weight: 700; color: var(--turquesa);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .sos-paso {
+      display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start;
+    }
+    .sos-paso:last-child { margin-bottom: 0; }
+    .sos-num {
+      min-width: 28px; height: 28px;
+      background: var(--turquesa); color: #000000;
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
+      font-weight: 700; font-size: 13px; margin-top: 1px;
+    }
+    .sos-num.ocre { background: var(--ocre); }
+    .sos-paso-texto { font-size: 14px; color: var(--subtexto); line-height: 1.6; }
+    .sos-paso-texto strong { color: #FFFFFF; }
+    .sos-nota {
+      background: #0D1F1E; border: 1px solid var(--turquesa);
+      border-radius: 8px; padding: 12px;
+      font-size: 12px; color: var(--subtexto);
+      margin-top: 14px; line-height: 1.5;
+    }
+
+    /* BOTÓN COMPARTIR */
+    .compartir-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: #075E54; color: #FFFFFF;
+      border: none; border-radius: 10px;
+      padding: 14px; width: 100%;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px; font-weight: 600;
+      cursor: pointer; margin-bottom: 24px;
+      transition: background 0.2s;
+    }
+    .compartir-btn:hover { background: #128C7E; }
 
     /* PRIMEROS AUXILIOS */
     .auxilios { margin-bottom: 24px; }
     .aux-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .aux-card {
-      background: var(--panel); border: 1px solid var(--borde);
+      background: var(--panel);
+      border: 1px solid var(--borde);
       border-radius: 10px; padding: 14px;
     }
     .aux-icono  { font-size: 22px; margin-bottom: 6px; }
-    .aux-titulo { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-    .aux-texto  { font-size: 12px; color: var(--muted); line-height: 1.5; }
-
-    /* FUENTE BADGE */
-    .fuente-badge {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: 10px; font-family: 'JetBrains Mono', monospace;
-      color: var(--muted); background: var(--borde);
-      border-radius: 4px; padding: 2px 7px; margin-left: 8px;
-    }
-    .fuente-badge.proxy { color: var(--amarillo); }
+    .aux-titulo { font-size: 15px; font-weight: 600; color: #FFFFFF; margin-bottom: 4px; }
+    .aux-texto  { font-size: 13px; color: var(--subtexto); line-height: 1.6; }
 
     /* ESTADO */
     #estado-carga {
@@ -173,7 +255,7 @@
     }
     .spinner {
       width: 32px; height: 32px;
-      border: 3px solid var(--borde); border-top-color: var(--verde);
+      border: 3px solid var(--borde); border-top-color: var(--turquesa);
       border-radius: 50%; animation: spin 0.8s linear infinite;
       margin: 0 auto 12px;
     }
@@ -181,11 +263,12 @@
 
     #error-msg {
       display: none;
-      background: #2e0000; border: 1px solid var(--rojo);
+      background: #1C1A00; border: 1px solid var(--ocre);
       border-radius: 10px; padding: 16px;
-      text-align: center; font-size: 13px; margin-bottom: 16px;
+      text-align: center; font-size: 13px;
+      color: #FFFFFF; margin-bottom: 16px;
     }
-    #error-msg a { color: var(--naranja); }
+    #error-msg a { color: var(--ocre); }
 
     /* FOOTER */
     footer {
@@ -193,41 +276,106 @@
       font-size: 11px; color: var(--muted);
       border-top: 1px solid var(--borde); margin-top: 8px;
     }
-    footer a { color: var(--muted); }
+    footer a { color: var(--turquesa); }
 
     @media (max-width: 400px) {
       .stat-valor { font-size: 22px; }
-      .sismo-card { grid-template-columns: 48px 1fr; }
-      .sismo-tiempo { display: none; }
+      .mag-num    { font-size: 22px; }
     }
+
+    /* MODAL SOS */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.85); z-index: 200;
+      overflow-y: auto; padding: 20px;
+    }
+    .modal-overlay.activo { display: block; }
+
+    .modal-box {
+      background: var(--panel); border: 2px solid var(--turquesa);
+      border-radius: 14px; max-width: 640px; margin: 0 auto;
+      padding: 24px 20px; position: relative;
+    }
+
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .modal-titulo {
+      font-size: 18px; font-weight: 700; color: var(--turquesa);
+    }
+    .modal-cerrar {
+      background: var(--borde); border: none; color: #FFFFFF;
+      font-size: 20px; width: 36px; height: 36px;
+      border-radius: 8px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .sos-seccion {
+      background: #0B0F1A; border: 1px solid var(--borde);
+      border-radius: 10px; padding: 16px; margin-bottom: 14px;
+    }
+    .sos-seccion-titulo {
+      font-size: 15px; font-weight: 700; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sos-badge {
+      font-size: 10px; padding: 2px 8px; border-radius: 20px;
+      font-weight: 600; text-transform: uppercase;
+    }
+    .badge-android { background: #1a3a1a; color: #4CAF50; }
+    .badge-iphone  { background: #1a1a3a; color: #6B9FFF; }
+
+    .sos-paso {
+      display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start;
+    }
+    .sos-num {
+      min-width: 24px; height: 24px; border-radius: 50%;
+      background: var(--turquesa); color: #000;
+      font-size: 12px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .sos-paso-texto { font-size: 13px; color: var(--subtexto); line-height: 1.5; }
+    .sos-paso-texto strong { color: #FFFFFF; }
+
+    .app-recomendada {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--borde); border-radius: 8px;
+      padding: 12px; margin-bottom: 8px;
+    }
+    .app-icono { font-size: 28px; }
+    .app-nombre { font-size: 14px; font-weight: 700; color: #FFFFFF; }
+    .app-desc   { font-size: 12px; color: var(--subtexto); margin-top: 2px; }
   </style>
 </head>
 <body>
 
+<div id="pagina-principal">
 <header>
   <div class="logo">
     <div class="logo-icon">🌎</div>
-    <div class="logo-text">Info<span>Sis</span>VE</div>
+    <div class="logo-text">Info<span class="sis">Sis</span>VE</div>
   </div>
   <div class="pulso"><div class="dot"></div> EN VIVO</div>
 </header>
 
 <div class="emergencia">
-  <span>🚨 <strong>Emergencia activa</strong> — Venezuela · Jun 2026</span>
+  <span>⚠️ <strong>Emergencia activa</strong> — Venezuela · Jun 2026</span>
   <a href="tel:171">📞 171</a>
 </div>
 
 <div class="stats">
   <div class="stat">
-    <div class="stat-valor" id="stat-replicas" style="color:var(--naranja)">13</div>
+    <div class="stat-valor" id="stat-replicas" style="color:var(--amarillo)">13</div>
     <div class="stat-label">Réplicas 7 días</div>
   </div>
   <div class="stat">
-    <div class="stat-valor" id="stat-mayor" style="color:var(--rojo)">7.5</div>
+    <div class="stat-valor" id="stat-mayor" style="color:var(--naranja)">7.5</div>
     <div class="stat-label">Mayor magnitud</div>
   </div>
   <div class="stat">
-    <div class="stat-valor" id="stat-reciente" style="color:var(--verde)">hace 3 h</div>
+    <div class="stat-valor" id="stat-reciente" style="color:var(--turquesa)">hace 8 h</div>
     <div class="stat-label">Última réplica</div>
   </div>
 </div>
@@ -239,7 +387,7 @@
       Actividad reciente
       <span class="fuente-badge" id="fuente-badge">USGS</span>
     </span>
-    <span class="ultima-act" id="ultima-act">act. 09:44 p. m.</span>
+    <span class="ultima-act" id="ultima-act">act. 02:27 a. m.</span> <span class="ultima-act" id="countdown" style="color:var(--turquesa)">· 23s</span>
   </div>
 
   <div id="error-msg" style="display: none;">
@@ -260,10 +408,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">54 km N de El Limón, VE</div>
-            <div class="sismo-meta">Prof. 10 km</div>
+            <div class="sismo-lugar">54 km al norte de El Limón, Venezuela</div>
+            <div class="sismo-fecha">26/06/2026, 06:16 p. m. · hace 8 h</div>
+            <div class="sismo-meta">Profundidad: 10.0 km</div>
           </div>
-          <div class="sismo-tiempo">hace 3 h</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-alto">
@@ -271,10 +419,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">17 km WSW de Morón, VE</div>
-            <div class="sismo-meta">Prof. 10 km</div>
+            <div class="sismo-lugar">17 km al oeste-suroeste de Morón, Venezuela</div>
+            <div class="sismo-fecha">26/06/2026, 12:19 a. m. · hace 1 d</div>
+            <div class="sismo-meta">Profundidad: 10.0 km</div>
           </div>
-          <div class="sismo-tiempo">hace 21 h</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-alto">
@@ -282,10 +430,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">5 km NE de Guatire, VE</div>
-            <div class="sismo-meta">Prof. 10 km</div>
+            <div class="sismo-lugar">5 km al noreste de Guatire, Venezuela</div>
+            <div class="sismo-fecha">25/06/2026, 01:48 a. m. · hace 2 d</div>
+            <div class="sismo-meta">Profundidad: 10.0 km</div>
           </div>
-          <div class="sismo-tiempo">hace 1 d</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-alto">
@@ -293,10 +441,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">13 km N de Caucagüito, VE</div>
-            <div class="sismo-meta">Prof. 10 km</div>
+            <div class="sismo-lugar">13 km al norte de Caucagüito, Venezuela</div>
+            <div class="sismo-fecha">24/06/2026, 06:23 p. m. · hace 2 d</div>
+            <div class="sismo-meta">Profundidad: 10.0 km</div>
           </div>
-          <div class="sismo-tiempo">hace 2 d</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-critico">
@@ -304,10 +452,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">28 km SE de Yumare, VE</div>
-            <div class="sismo-meta">Prof. 10 km</div>
+            <div class="sismo-lugar">28 km al sureste de Yumare, Venezuela</div>
+            <div class="sismo-fecha">24/06/2026, 06:05 p. m. · hace 2 d</div>
+            <div class="sismo-meta">Profundidad: 10.0 km</div>
           </div>
-          <div class="sismo-tiempo">hace 2 d</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-critico">
@@ -315,10 +463,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">23 km SE de Yumare, VE</div>
-            <div class="sismo-meta">Prof. 20 km</div>
+            <div class="sismo-lugar">23 km al sureste de Yumare, Venezuela</div>
+            <div class="sismo-fecha">24/06/2026, 06:04 p. m. · hace 2 d</div>
+            <div class="sismo-meta">Profundidad: 20.3 km</div>
           </div>
-          <div class="sismo-tiempo">hace 2 d</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-alto">
@@ -326,10 +474,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">33 km E de Boconó, VE</div>
-            <div class="sismo-meta">Prof. 10 km</div>
+            <div class="sismo-lugar">33 km al este de Boconó, Venezuela</div>
+            <div class="sismo-fecha">17/06/2026, 09:23 p. m. · hace 9 d</div>
+            <div class="sismo-meta">Profundidad: 10.0 km</div>
           </div>
-          <div class="sismo-tiempo">hace 9 d</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-alto">
@@ -337,10 +485,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">1 km SE de Villanueva, Colombia</div>
-            <div class="sismo-meta">Prof. 164 km</div>
+            <div class="sismo-lugar">1 km al sureste de Villanueva, Colombia</div>
+            <div class="sismo-fecha">17/06/2026, 06:51 a. m. · hace 9 d</div>
+            <div class="sismo-meta">Profundidad: 164.0 km</div>
           </div>
-          <div class="sismo-tiempo">hace 9 d</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-alto">
@@ -348,10 +496,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">1 km SSW de Jordán, Colombia</div>
-            <div class="sismo-meta">Prof. 162 km</div>
+            <div class="sismo-lugar">1 km al sur-suroeste de Jordán, Colombia</div>
+            <div class="sismo-fecha">17/06/2026, 12:11 a. m. · hace 10 d</div>
+            <div class="sismo-meta">Profundidad: 161.8 km</div>
           </div>
-          <div class="sismo-tiempo">hace 9 d</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-alto">
@@ -359,10 +507,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">22 km W de Ospino, VE</div>
-            <div class="sismo-meta">Prof. 12 km</div>
+            <div class="sismo-lugar">22 km al oeste de Ospino, Venezuela</div>
+            <div class="sismo-fecha">13/06/2026, 08:39 p. m. · hace 13 d</div>
+            <div class="sismo-meta">Profundidad: 12.1 km</div>
           </div>
-          <div class="sismo-tiempo">hace 13 d</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-alto">
@@ -370,10 +518,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">28 km SW de El Tocuyo, VE</div>
-            <div class="sismo-meta">Prof. 10 km</div>
+            <div class="sismo-lugar">28 km al suroeste de El Tocuyo, Venezuela</div>
+            <div class="sismo-fecha">04/06/2026, 07:41 p. m. · hace 22 d</div>
+            <div class="sismo-meta">Profundidad: 10.0 km</div>
           </div>
-          <div class="sismo-tiempo">hace 22 d</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-critico">
@@ -381,10 +529,10 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">133 km SSE de Oistins, Barbados</div>
-            <div class="sismo-meta">Prof. 35 km</div>
+            <div class="sismo-lugar">133 km al sur-sureste de Oistins, Barbados</div>
+            <div class="sismo-fecha">30/05/2026, 05:27 p. m. · hace 27 d</div>
+            <div class="sismo-meta">Profundidad: 35.0 km</div>
           </div>
-          <div class="sismo-tiempo">hace 27 d</div>
         </div>
         <div class="sismo-card ">
           <div class="magnitud-badge mag-alto">
@@ -392,11 +540,18 @@
             <div class="mag-label">Mw</div>
           </div>
           <div class="sismo-info">
-            <div class="sismo-lugar">69 km N de Güiria, VE</div>
-            <div class="sismo-meta">Prof. 130 km</div>
+            <div class="sismo-lugar">69 km al norte de Güiria, Venezuela</div>
+            <div class="sismo-fecha">29/05/2026, 08:31 p. m. · hace 28 d</div>
+            <div class="sismo-meta">Profundidad: 129.8 km</div>
           </div>
-          <div class="sismo-tiempo">hace 28 d</div>
         </div></div>
+
+  <button class="compartir-btn" onclick="compartirWhatsApp()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+    </svg>
+    Compartir por WhatsApp
+  </button>
 
   <div class="auxilios">
     <div class="seccion-titulo"><span>Primeros auxilios</span></div>
@@ -416,46 +571,109 @@
         <div class="aux-titulo">Hemorragias</div>
         <div class="aux-texto">Presión directa y firme. Si traspasa la tela, añade más encima — no retires la primera.</div>
       </div>
-      <div class="aux-card">
+      <div class="aux-card" onclick="mostrarSOS()" style="cursor:pointer; border-color: var(--turquesa);">
         <div class="aux-icono">🆘</div>
-        <div class="aux-titulo">Atrapado</div>
-        <div class="aux-texto">Golpea tuberías — no grites para ahorrar oxígeno. No enciendas fuego.</div>
+        <div class="aux-titulo" style="color:var(--turquesa);">Protocolo SOS →</div>
+        <div class="aux-texto">Activa alarma sísmica y modo emergencia en tu Android.</div>
       </div>
     </div>
   </div>
 
+
+<!-- PÁGINA SOS INTERNA -->
+<div class="pagina" id="pagina-sos">
+  <div class="sos-header">
+    <button class="sos-back" onclick="volverInicio()">← Volver</button>
+    <div class="sos-titulo">🆘 Protocolo SOS</div>
+  </div>
+
+  <!-- SECCIÓN 1: ALARMA SÍSMICA ANDROID -->
+  <div class="sos-seccion">
+    <div class="sos-seccion-titulo">
+      📳 Activar Alarma Sísmica en Android
+    </div>
+
+    <div class="sos-paso">
+      <div class="sos-num">1</div>
+      <div class="sos-paso-texto">Abre <strong>Ajustes</strong> en tu teléfono Android.</div>
+    </div>
+    <div class="sos-paso">
+      <div class="sos-num">2</div>
+      <div class="sos-paso-texto">Ve a <strong>Seguridad y emergencias</strong> (en algunos modelos: <strong>Bienestar digital y controles parentales</strong> → Emergencias).</div>
+    </div>
+    <div class="sos-paso">
+      <div class="sos-num">3</div>
+      <div class="sos-paso-texto">Selecciona <strong>Alertas de emergencia inalámbricas</strong>.</div>
+    </div>
+    <div class="sos-paso">
+      <div class="sos-num">4</div>
+      <div class="sos-paso-texto">Activa <strong>Alertas sísmicas</strong> o <strong>Alertas de terremotos</strong> — asegúrate de que el interruptor esté en <strong>ON</strong>.</div>
+    </div>
+    <div class="sos-paso">
+      <div class="sos-num">5</div>
+      <div class="sos-paso-texto">Activa también <strong>Alertas extremas</strong> y <strong>Alertas graves</strong> para cobertura completa.</div>
+    </div>
+
+    <div class="sos-nota">
+      ⚠️ En teléfonos Samsung busca: <strong>Ajustes → Seguridad y emergencia → Alertas de emergencia inalámbricas</strong><br>
+      En Xiaomi/MIUI: <strong>Ajustes → Contraseñas y seguridad → Emergencias → Alertas de emergencia</strong>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2: MODO EMERGENCIA -->
+  <div class="sos-seccion">
+    <div class="sos-seccion-titulo">
+      🔴 Activar Modo Emergencia y Contactos SOS
+    </div>
+
+    <div class="sos-paso">
+      <div class="sos-num ocre">1</div>
+      <div class="sos-paso-texto">Ve a <strong>Ajustes → Seguridad y emergencias → Contactos de emergencia</strong>.</div>
+    </div>
+    <div class="sos-paso">
+      <div class="sos-num ocre">2</div>
+      <div class="sos-paso-texto">Toca <strong>Agregar contacto</strong> y selecciona de tu lista las personas de confianza que deben recibir tu alerta.</div>
+    </div>
+    <div class="sos-paso">
+      <div class="sos-num ocre">3</div>
+      <div class="sos-paso-texto">Activa <strong>Compartir ubicación automáticamente</strong> con esos contactos cuando se active la emergencia.</div>
+    </div>
+    <div class="sos-paso">
+      <div class="sos-num ocre">4</div>
+      <div class="sos-paso-texto"><strong>Para activar el SOS rápido:</strong> Presiona el botón de encendido <strong>5 veces seguidas</strong> — se enviará alerta con tu ubicación a tus contactos de emergencia.</div>
+    </div>
+    <div class="sos-paso">
+      <div class="sos-num ocre">5</div>
+      <div class="sos-paso-texto">En <strong>Modo emergencia</strong> (mantén presionado el botón de encendido → Modo emergencia) el teléfono reduce consumo de batería y mantiene activas solo llamadas, mensajes y ubicación.</div>
+    </div>
+
+    <div class="sos-nota">
+      📍 En Samsung: <strong>mantén presionado el botón lateral → Modo de emergencia</strong><br>
+      En Pixel/Android puro: <strong>Ajustes → Seguridad → SOS de emergencia</strong>
+    </div>
+  </div>
+
+</div>
+
 </main>
 
+</div><!-- fin pagina-principal -->
 <footer>
   InfoSisVE · Datos: <a href="https://earthquake.usgs.gov/" target="_blank">USGS Earthquake Hazards Program</a><br>
-  Actualización automática cada 2 min · Emergencias Venezuela: <strong>171</strong>
+  Actualización automática cada 30 seg · Emergencias Venezuela: <strong>171</strong>
 </footer>
 
 <script>
-  // ── PARÁMETROS ZONA VENEZUELA ──
-  const PARAMS = 'format=geojson&minlatitude=1&maxlatitude=14&minlongitude=-74&maxlongitude=-59&orderby=time&limit=30&minmagnitude=1.5';
+  const PARAMS = 'format=geojson&minlatitude=1&maxlatitude=14&minlongitude=-74&maxlongitude=-59&orderby=time&limit=50&minmagnitude=1.5';
 
-  // Fuentes en orden de prioridad (directa → proxies CORS gratuitos)
   const FUENTES = [
-    {
-      url: `https://earthquake.usgs.gov/fdsnws/event/1/query?${PARAMS}`,
-      label: 'USGS',
-      proxy: false
-    },
-    {
-      url: `https://corsproxy.io/?url=https://earthquake.usgs.gov/fdsnws/event/1/query?${PARAMS}`,
-      label: 'USGS (proxy)',
-      proxy: true
-    },
-    {
-      url: `https://api.allorigins.win/raw?url=${encodeURIComponent('https://earthquake.usgs.gov/fdsnws/event/1/query?' + PARAMS)}`,
-      label: 'USGS (mirror)',
-      proxy: true
-    }
+    { url: `https://earthquake.usgs.gov/fdsnws/event/1/query?${PARAMS}`, label: 'USGS', proxy: false },
+    { url: `https://corsproxy.io/?url=https://earthquake.usgs.gov/fdsnws/event/1/query?${PARAMS}`, label: 'USGS (proxy)', proxy: true },
+    { url: `https://api.allorigins.win/raw?url=${encodeURIComponent('https://earthquake.usgs.gov/fdsnws/event/1/query?' + PARAMS)}`, label: 'USGS (mirror)', proxy: true }
   ];
 
-  let ultimoId    = null;
-  let fuenteActual = 'USGS';
+  let ultimoId = null;
+  let esPrimeraCarga = true;
 
   function clasesMag(m) {
     if (m >= 5.0) return 'mag-critico';
@@ -475,12 +693,36 @@
     return `hace ${dias} d`;
   }
 
-  function lugarLegible(place) {
-    if (!place) return 'Venezuela';
-    return place.replace('of ', 'de ').replace('Venezuela', 'VE');
+  function fechaVET(ms) {
+    return new Date(ms).toLocaleString('es-VE', {
+      timeZone: 'America/Caracas',
+      day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
   }
 
-  function renderLista(features, esPrimeraCarga) {
+  function lugarLegible(place) {
+    if (!place) return 'Venezuela';
+    return place
+      .replace(/(\d+) km NNE of /, '$1 km al nor-noreste de ')
+      .replace(/(\d+) km NNW of /, '$1 km al nor-noroeste de ')
+      .replace(/(\d+) km SSE of /, '$1 km al sur-sureste de ')
+      .replace(/(\d+) km SSW of /, '$1 km al sur-suroeste de ')
+      .replace(/(\d+) km ENE of /, '$1 km al este-noreste de ')
+      .replace(/(\d+) km ESE of /, '$1 km al este-sureste de ')
+      .replace(/(\d+) km WNW of /, '$1 km al oeste-noroeste de ')
+      .replace(/(\d+) km WSW of /, '$1 km al oeste-suroeste de ')
+      .replace(/(\d+) km NE of /,  '$1 km al noreste de ')
+      .replace(/(\d+) km NW of /,  '$1 km al noroeste de ')
+      .replace(/(\d+) km SE of /,  '$1 km al sureste de ')
+      .replace(/(\d+) km SW of /,  '$1 km al suroeste de ')
+      .replace(/(\d+) km N of /,   '$1 km al norte de ')
+      .replace(/(\d+) km S of /,   '$1 km al sur de ')
+      .replace(/(\d+) km E of /,   '$1 km al este de ')
+      .replace(/(\d+) km W of /,   '$1 km al oeste de ');
+  }
+
+  function renderLista(features) {
     const lista = document.getElementById('lista-sismos');
     const primerIdNuevo = features[0]?.id;
     const hayNuevo = !esPrimeraCarga && primerIdNuevo && primerIdNuevo !== ultimoId;
@@ -488,8 +730,9 @@
     lista.innerHTML = features.map((f, i) => {
       const p    = f.properties;
       const mag  = p.mag?.toFixed(1) ?? '?';
-      const prof = f.geometry?.coordinates?.[2]?.toFixed(0) ?? '?';
+      const prof = f.geometry?.coordinates?.[2]?.toFixed(1) ?? '?';
       const nuevo = (i === 0 && hayNuevo) ? 'nuevo' : '';
+
       return `
         <div class="sismo-card ${nuevo}">
           <div class="magnitud-badge ${clasesMag(p.mag)}">
@@ -498,9 +741,9 @@
           </div>
           <div class="sismo-info">
             <div class="sismo-lugar">${lugarLegible(p.place)}</div>
-            <div class="sismo-meta">Prof. ${prof} km</div>
+            <div class="sismo-fecha">${fechaVET(p.time)} · ${tiempoRelativo(p.time)}</div>
+            <div class="sismo-meta">Profundidad: ${prof} km</div>
           </div>
-          <div class="sismo-tiempo">${tiempoRelativo(p.time)}</div>
         </div>`;
     }).join('');
 
@@ -515,7 +758,6 @@
     document.getElementById('stat-reciente').textContent = ultima ? tiempoRelativo(ultima) : '—';
   }
 
-  // Intenta cada fuente en orden hasta que una responda
   async function fetchConFallback() {
     for (const fuente of FUENTES) {
       try {
@@ -523,32 +765,22 @@
         if (!res.ok) continue;
         const data = await res.json();
         if (!data.features) continue;
-
-        // Actualizar badge de fuente
         const badge = document.getElementById('fuente-badge');
         badge.textContent = fuente.label;
         badge.className = 'fuente-badge' + (fuente.proxy ? ' proxy' : '');
-
         return data.features;
-      } catch (_) {
-        // Intenta la siguiente fuente
-        continue;
-      }
+      } catch (_) { continue; }
     }
-    return null; // Todas fallaron
+    return null;
   }
-
-  let esPrimeraCarga = true;
 
   async function cargar() {
     const features = await fetchConFallback();
-
     if (!features) {
       document.getElementById('estado-carga').style.display = 'none';
       document.getElementById('error-msg').style.display    = 'block';
       return;
     }
-
     document.getElementById('estado-carga').style.display = 'none';
     document.getElementById('error-msg').style.display    = 'none';
 
@@ -556,19 +788,117 @@
       document.getElementById('lista-sismos').innerHTML =
         '<div style="text-align:center;padding:30px;color:var(--muted)">Sin actividad registrada.</div>';
     } else {
-      renderLista(features, esPrimeraCarga);
+      renderLista(features);
       actualizarStats(features);
     }
 
     document.getElementById('ultima-act').textContent =
-      'act. ' + new Date().toLocaleTimeString('es-VE', { hour: '2-digit', minute: '2-digit' });
+      'act. ' + new Date().toLocaleTimeString('es-VE', {
+        timeZone: 'America/Caracas',
+        hour: '2-digit', minute: '2-digit'
+      });
 
     esPrimeraCarga = false;
   }
 
-  cargar();
-  setInterval(cargar, 120000);
+  function compartirWhatsApp() {
+    const url   = 'https://jacko-ia.github.io/infosisve';
+    const texto = `🌎 *InfoSisVE* — Monitor de réplicas sísmicas en Venezuela en tiempo real.\n\nConsulta la actividad sísmica actualizada cada 2 minutos:\n${url}\n\n_Sin necesidad de VPN. Comparte con quien lo necesite._`;
+    window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank');
+  }
+
 </script>
 
+<!-- MODAL SOS -->
+<div class="modal-overlay" id="modal-sos">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-titulo">🆘 Guía de Emergencia</div>
+      <button class="modal-cerrar" onclick="document.getElementById(&#39;modal-sos&#39;).classList.remove(&#39;activo&#39;)">✕</button>
+    </div>
 
+    <!-- ANDROID -->
+    <div class="sos-seccion">
+      <div class="sos-seccion-titulo">
+        🤖 Android
+        <span class="sos-badge badge-android">Android</span>
+      </div>
+
+      <div style="font-size:13px;color:var(--ocre);font-weight:600;margin-bottom:8px;">📳 Alarma de Sismo</div>
+      <div class="sos-paso"><div class="sos-num">1</div><div class="sos-paso-texto">Ve a <strong>Ajustes → Seguridad y emergencias</strong></div></div>
+      <div class="sos-paso"><div class="sos-num">2</div><div class="sos-paso-texto">Activa <strong>"Alertas de emergencia inalámbricas"</strong></div></div>
+      <div class="sos-paso"><div class="sos-num">3</div><div class="sos-paso-texto">Habilita <strong>"Alertas de terremotos"</strong> si está disponible en tu región</div></div>
+
+      <div style="font-size:13px;color:var(--ocre);font-weight:600;margin:14px 0 8px;">📞 Modo Emergencia</div>
+      <div class="sos-paso"><div class="sos-num">1</div><div class="sos-paso-texto">Mantén presionado el <strong>botón de encendido</strong> por 3 segundos</div></div>
+      <div class="sos-paso"><div class="sos-num">2</div><div class="sos-paso-texto">Selecciona <strong>"Modo de emergencia"</strong> en el menú</div></div>
+      <div class="sos-paso"><div class="sos-num">3</div><div class="sos-paso-texto">Agrega tus <strong>contactos de emergencia</strong> desde ese mismo menú</div></div>
+      <div class="sos-paso"><div class="sos-num">4</div><div class="sos-paso-texto">El teléfono conservará batería y llamará a tus contactos con tu ubicación</div></div>
+
+      <div style="font-size:13px;color:var(--ocre);font-weight:600;margin:14px 0 8px;">🆘 Llamada SOS rápida</div>
+      <div class="sos-paso"><div class="sos-num">1</div><div class="sos-paso-texto">Presiona el <strong>botón de encendido 5 veces seguidas</strong> rápidamente</div></div>
+      <div class="sos-paso"><div class="sos-num">2</div><div class="sos-paso-texto">El teléfono llamará automáticamente a tus <strong>contactos SOS</strong> y enviará tu ubicación</div></div>
+    </div>
+
+    <!-- IPHONE -->
+    <div class="sos-seccion">
+      <div class="sos-seccion-titulo">
+        🍎 iPhone
+        <span class="sos-badge badge-iphone">iOS</span>
+      </div>
+
+      <div style="font-size:13px;color:#6B9FFF;font-weight:600;margin-bottom:8px;">🆘 SOS de Emergencia</div>
+      <div class="sos-paso"><div class="sos-num">1</div><div class="sos-paso-texto">Presiona el <strong>botón lateral + volumen</strong> simultáneamente hasta ver el deslizador</div></div>
+      <div class="sos-paso"><div class="sos-num">2</div><div class="sos-paso-texto">Desliza <strong>"Llamada de emergencia SOS"</strong> — llamará al 171 automáticamente</div></div>
+      <div class="sos-paso"><div class="sos-num">3</div><div class="sos-paso-texto">Configura <strong>contactos médicos de emergencia</strong> en: Ajustes → Salud → Ficha médica</div></div>
+
+      <div style="font-size:13px;color:#6B9FFF;font-weight:600;margin:14px 0 8px;">📲 Apps recomendadas para alertas sísmicas</div>
+
+      <div class="app-recomendada">
+        <div class="app-icono">🌍</div>
+        <div>
+          <div class="app-nombre">LastQuake</div>
+          <div class="app-desc">Alertas sísmicas en tiempo real · EMSC · Gratis · iOS y Android</div>
+        </div>
+      </div>
+
+      <div class="app-recomendada">
+        <div class="app-icono">📡</div>
+        <div>
+          <div class="app-nombre">My Earthquake Alerts &amp; Feed</div>
+          <div class="app-desc">Notificaciones personalizadas por magnitud y distancia · iOS y Android</div>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="document.getElementById(&#39;modal-sos&#39;).classList.remove(&#39;activo&#39;)" style="width:100%;padding:14px;background:var(--turquesa);color:#000;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px;">
+      ✓ Entendido
+    </button>
+  </div>
+</div>
+
+
+<script>
+// Sobreescribir el intervalo con countdown visual
+(function() {
+  const INTERVALO = 30;
+  let segundosRestantes = INTERVALO;
+
+  function actualizarCountdown() {
+    const el = document.getElementById('countdown');
+    if (el) el.textContent = `· ${segundosRestantes}s`;
+    segundosRestantes--;
+    if (segundosRestantes < 0) segundosRestantes = INTERVALO;
+  }
+
+  // Arrancar
+  cargar();
+  actualizarCountdown();
+  setInterval(actualizarCountdown, 1000);
+  setInterval(() => {
+    cargar();
+    segundosRestantes = INTERVALO;
+  }, INTERVALO * 1000);
+})();
+</script>
 </body></html>
