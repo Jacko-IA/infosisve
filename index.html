@@ -592,6 +592,12 @@
     esPrimeraCarga = false;
   }
 
+  function compartirTelegram() {
+    const url   = 'https://jacko-ia.github.io/infosisve';
+    const texto = `🌎 InfoSisVE — Monitor de réplicas sísmicas en Venezuela en tiempo real.\n\nConsulta la actividad sísmica actualizada cada 30 segundos:\n${url}\n\nSin necesidad de VPN. Comparte con quien lo necesite.`;
+    window.open('https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(texto), '_blank');
+  }
+
   function compartirWhatsApp() {
     const url   = 'https://jacko-ia.github.io/infosisve';
     const texto = `🌎 *InfoSisVE* — Monitor de réplicas sísmicas en Venezuela en tiempo real.\n\nConsulta la actividad sísmica actualizada cada 2 minutos:\n${url}\n\n_Sin necesidad de VPN. Comparte con quien lo necesite._`;
