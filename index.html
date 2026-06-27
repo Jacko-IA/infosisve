@@ -90,12 +90,14 @@
     }
     .stat { background: var(--panel); padding: 14px 16px; text-align: center; }
     .stat-valor {
-      font-size: 26px; font-weight: 700;
+      font-size: 28px; font-weight: 700;
       font-family: 'JetBrains Mono', monospace; line-height: 1;
     }
     .stat-label {
-      font-size: 11px; color: var(--muted);
-      margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;
+      font-size: 10px; color: var(--muted);
+      margin-top: 6px; text-transform: uppercase;
+      letter-spacing: 0.4px; line-height: 1.5;
+      text-align: center;
     }
 
     /* MAIN */
@@ -372,15 +374,15 @@
 <div class="stats">
   <div class="stat">
     <div class="stat-valor" id="stat-replicas" style="color:var(--amarillo)">—</div>
-    <div class="stat-label">Réplicas 7 días</div>
+    <div class="stat-label">Réplicas moderadas<br>a fuertes<br><span id="stat-dias-label">últimos 7 días</span></div>
   </div>
   <div class="stat">
     <div class="stat-valor" id="stat-mayor" style="color:var(--naranja)">—</div>
-    <div class="stat-label">Mayor magnitud</div>
+    <div class="stat-label">Mayor<br>magnitud</div>
   </div>
   <div class="stat">
     <div class="stat-valor" id="stat-reciente" style="color:var(--turquesa)">—</div>
-    <div class="stat-label">Última réplica</div>
+    <div class="stat-label">Última réplica<br>moderada<br>o fuerte</div>
   </div>
 </div>
 
@@ -477,12 +479,21 @@
     return 'mag-bajo';
   }
 
-  function tiempoRelativo(ms) {
+  function tiempoRelativo(ms, corto) {
     const diff = Date.now() - ms;
+    const seg  = Math.floor(diff / 1000);
     const min  = Math.floor(diff / 60000);
     const hrs  = Math.floor(diff / 3600000);
     const dias = Math.floor(diff / 86400000);
-    if (min < 1)   return 'ahora mismo';
+    if (corto) {
+      // Versión para el stat (sin "hace")
+      if (seg < 60)  return `${seg} SEG`;
+      if (min < 60)  return `${min} MIN`;
+      if (hrs < 24)  return `${hrs} H`;
+      return `${dias} D`;
+    }
+    // Versión para la lista (con contexto)
+    if (seg < 60)  return `hace ${seg} seg`;
     if (min < 60)  return `hace ${min} min`;
     if (hrs < 24)  return `hace ${hrs} h`;
     return `hace ${dias} d`;
@@ -551,11 +562,16 @@
   }
 
   function actualizarStats(features) {
-    document.getElementById('stat-replicas').textContent = features.length;
+    // Solo moderadas a fuertes (M4.0+) para stats
+    const moderadas = features.filter(f => f.properties.mag >= 4.0);
+    document.getElementById('stat-replicas').textContent = moderadas.length;
+
     const mags = features.map(f => f.properties.mag).filter(Boolean);
     document.getElementById('stat-mayor').textContent = mags.length ? Math.max(...mags).toFixed(1) : '—';
-    const ultima = features[0]?.properties?.time;
-    document.getElementById('stat-reciente').textContent = ultima ? tiempoRelativo(ultima) : '—';
+
+    // Última réplica moderada o fuerte
+    const ultimaMod = moderadas[0]?.properties?.time;
+    document.getElementById('stat-reciente').textContent = ultimaMod ? tiempoRelativo(ultimaMod, true) : '—';
   }
 
   async function fetchConFallback() {
